@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>JavaScript权威指南阅读</title>
+    <url>/2021/03/05/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h2 id="文档对象模型（DOM）"><a href="#文档对象模型（DOM）" class="headerlink" title="文档对象模型（DOM）"></a>文档对象模型（DOM）</h2><p>DOM将页面映射成多层节点结构，DOM Core规定映射方式，DOM HTML规定HTML对象和方法</p>
+<h2 id="浏览器对象模型（BOM）"><a href="#浏览器对象模型（BOM）" class="headerlink" title="浏览器对象模型（BOM）"></a>浏览器对象模型（BOM）</h2><p>用来控制浏览器显示页面以外的部分，以及JS拓展，例如窗口弹窗，移动缩放，对cookies的支持</p>
+<h2 id="关于-lt-script-gt-元素"><a href="#关于-lt-script-gt-元素" class="headerlink" title="关于&lt;script&gt;元素"></a>关于&lt;script&gt;元素</h2><p>浏览器按照出现顺序依次进行解析，为避免浏览器呈现页面空白因此将JS代码放入&lt;/body&gt;元素之前</p>
+<h2 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h2><p>&lt;！DOCTYPE html&gt;这是像浏览器声明解析模式，用来规定不同浏览器对于页面统一的解析模式</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p>指脚本中对于变量、函数、属性的名字，推荐采用驼峰命名（首字符小写，其余单词首字母大写）</p>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><h3 id="关键字和保留字"><a href="#关键字和保留字" class="headerlink" title="关键字和保留字"></a>关键字和保留字</h3><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>JS的变量是松散类型对，即可以直接保存任何类型数据。</p>
+<p>定义在函数局部作用域的变量将在函数退出时销毁</p>
+<p>省略var定义操作符进行变量命名赋值，会直接定义全局变量。在严格模式下将会抛出错误。</p>
+<p>一条语句可以定义多个变量,逗号分隔开即可</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>,b=<span class="number">2</span>,c=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型：基本数据类型和对象数据类型"><a href="#数据类型：基本数据类型和对象数据类型" class="headerlink" title="数据类型：基本数据类型和对象数据类型"></a>数据类型：基本数据类型和对象数据类型</h2><p>简单数据类型（基本数据类型）：Undefined、Null、Boolean、Number、String</p>
+<p>复杂数据类型：Object</p>
+<h3 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof  操作符"></a>typeof  操作符</h3><p>typeof在JS中用来检测数据类型，非函数而是操作符，其中    typerof null    将会返回object，因为这被认作一个空对象引用，对于正则表达式这返回function。</p>
+<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><p>出现在声明变量名但未初始化的变量上,引入用于区分未定义对象空指针和未初始化变量</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">alert(a);	<span class="comment">//Undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><p>检查变量是否为null从而确定变量是否保存一个对象引用</p>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//赋值过程可以使用十进制，八进制字面量和十六进制字面量赋值</span></span><br><span class="line"><span class="comment">//十进制</span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="number">10</span></span><br><span class="line"><span class="comment">//八进制需要前导为0，八进制的56</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">070</span></span><br><span class="line"><span class="comment">//十六进制需要前导为0x,十六进制的10</span></span><br><span class="line"><span class="keyword">var</span> num3 = <span class="number">0xa</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>浮点数值</strong> 即该数值中包含一个小数点，且小数点后有一位数字，需要的内存空间为整数数值的两倍，js中将自动的将可转化的浮点数转化为整数。最高精度为17位小数。</p>
+<p>对于极大或极小数采科学计数法（e表示法）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num =<span class="number">3.125e4</span> <span class="comment">//表示为31250</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>NaN</strong>    表示非数值，与任何值不相等包括本身。js制定了isNaN（）用于判断传入参数是否为非数值。该方法将会调用参数对象的valueOf()、toString()方法确定对象数值。</p>
+<p><strong>数值转换</strong>    通常用parseInt(num,x),其中第二个参数x作为进制识别参数</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>字符类型</p>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>js中对象是数据和功能的集合，对象需要通过new操作符和对象类型名称来创建。</p>
+<p>Obeject类型具有的方法属性也存在于具体的对象中。例如：toString（）、valueOf（）。</p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>+、-即为操作符</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>JS函数定义是不必制定返回值。</p>
+<p>JS函数对于传递参数无限制（个数，类型），原因在于参数在JS中是作为数组表示，可以通过    argumet    对象访问</p>
+<p>参数数组例如argument[0]。这说明参数签名的命名非必须。</p>
+<h3 id="没有重载"><a href="#没有重载" class="headerlink" title="没有重载"></a>没有重载</h3><p>由于参数签名非必须，因此JS无法通过定义同名不同参数的函数来实现函数重载，相同命名的函数只有后者生效，但是可以通过传递的参数判断进行重载模仿。</p>
+<h2 id="变量的类型：基本类型和引用类型"><a href="#变量的类型：基本类型和引用类型" class="headerlink" title="变量的类型：基本类型和引用类型"></a>变量的类型：基本类型和引用类型</h2><p>基本类型指单一数据对象（基本数据类型），引用类型指内存对象。</p>
+<h2 id="JS之参数传递"><a href="#JS之参数传递" class="headerlink" title="JS之参数传递"></a>JS之参数传递</h2><h3 id="按值传递"><a href="#按值传递" class="headerlink" title="按值传递"></a>按值传递</h3><p>JS中的函数参数均为按值传递，即将外部值复制到内部变量。</p>
+<h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>而参数对象则直接对堆内存中对象进行修改。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">setName</span>(<span class="params">man</span>)</span>&#123;</span><br><span class="line">    man.name = <span class="string">&quot;zhb&quot;</span></span><br><span class="line">    <span class="comment">//实际定义的是内部同名局部变量，函数执行完毕内部同名变量man将被销毁</span></span><br><span class="line">    man = <span class="keyword">new</span> Obejcet()</span><br><span class="line">    man.name = <span class="string">&quot;atm&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> man =<span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">setName(man)</span><br><span class="line">alert(man.name)	<span class="comment">//输出为zhb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="检测变量引用类型"><a href="#检测变量引用类型" class="headerlink" title="检测变量引用类型"></a>检测变量引用类型</h2><p>使用    instanceif    操作符</p>
+<h3 id="instanceof原理"><a href="#instanceof原理" class="headerlink" title="instanceof原理"></a>instanceof原理</h3><p>能在实例的 <strong>原型对象链</strong> 中找到该构造函数的<code>prototype</code>属性所指向的 <strong>原型对象</strong>，就返回<code>true</code>。</p>
+<h2 id="JS之词法（静态）作用域-amp-JS之作用域链"><a href="#JS之词法（静态）作用域-amp-JS之作用域链" class="headerlink" title="JS之词法（静态）作用域&amp;JS之作用域链"></a>JS之词法（静态）作用域&amp;JS之作用域链</h2><p> 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。 </p>
+<p>代码执行时会创建一个变量对象作用域链，用于对执行环境中的变量进行有序访问，前端为当前变量对象。以从内到外的形式进行变量和函数的检索、调用。</p>
+<p> <strong>注意：</strong>函数的执行用到了作用域链，<strong>这个作用域链是在函数定义的时候创建的</strong>。 </p>
+<p>特性:</p>
+<ul>
+<li><strong>声明提前</strong>: 一个声明在函数体内都是可见的, 函数优先于变量</li>
+<li>非匿名自执行函数，函数变量为 <strong>只读</strong> 状态，无法修改</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">2</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果是 1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h3><p>使用try-catch中的catch块、或者with语句</p>
+<h3 id="使用var带来的无块级作用域问题"><a href="#使用var带来的无块级作用域问题" class="headerlink" title="使用var带来的无块级作用域问题"></a>使用var带来的无块级作用域问题</h3><p>定义于if、for内部语句的变量将会将会在语句执行完毕销毁时释放到父环境。</p>
+<h2 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h2><p>使用标记清楚，当变量进入环境时标记，当变量进入内存时去掉环境中的变量标记，再次被标记上的变量将会被删除。</p>
+<h2 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h2><p>当引用变量不在有用时可以通过设定为null值来标记释放，这个方法叫做解除引用。</p>
+<h2 id="补充小结1"><a href="#补充小结1" class="headerlink" title="补充小结1"></a>补充小结1</h2><p>基本类型被保存在栈内存中、引用类型保存在堆内存中。</p>
+<p>引用类型变量包含的实际是指向该对象的地址，所以一个对象对另一个引用对象的复制，是复制指针。</p>
+<h2 id="Object引用类型"><a href="#Object引用类型" class="headerlink" title="Object引用类型"></a>Object引用类型</h2><p>对象是应用类型的实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义方法</span></span><br><span class="line"><span class="comment">//new 操作符+构造函数</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"><span class="comment">//对象字面量语法</span></span><br><span class="line"><span class="keyword">var</span> name =&#123;</span><br><span class="line">    a=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    b=<span class="string">&#x27;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方括号访问对象属性</span></span><br><span class="line">name[<span class="string">&#x27;propertyname&#x27;</span>]</span><br><span class="line"><span class="comment">//点访问</span></span><br><span class="line">name.propertyname</span><br></pre></td></tr></table></figure>
+
+<h2 id="6Array类型"><a href="#6Array类型" class="headerlink" title="6Array类型"></a>6Array类型</h2><h3 id="栈方法（LIFO）"><a href="#栈方法（LIFO）" class="headerlink" title="栈方法（LIFO）"></a>栈方法（LIFO）</h3><p>push()推入尾项、pop()弹出尾项</p>
+<h3 id="队列方法（FIFO）"><a href="#队列方法（FIFO）" class="headerlink" title="队列方法（FIFO）"></a>队列方法（FIFO）</h3><p>unshift()添加首项、shift()移除首项</p>
+<h3 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h3><p>reverse()翻转、sort()升序排序</p>
+<h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">list.concat() <span class="comment">//创建当前对象副本同形参结合，返回结果</span></span><br><span class="line"></span><br><span class="line">list.slice(n1,n2) <span class="comment">//获取对象中变量从n1到n2为新数组，返回结果</span></span><br><span class="line"></span><br><span class="line">list.splice(n1,n2,n3) <span class="comment">//n1指定删除位置，n2指定删除项数，n3指定添加形参，返回结果</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">list.indexOf(n，n1) <span class="comment">//从n1位置向后遍历对象寻找n,返回索引</span></span><br><span class="line"></span><br><span class="line">list.lastindexOf(n,n1) <span class="comment">//从n1位置向前遍历对象寻找n,返回索引</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="JS之执行上下文（Excution-Context）"><a href="#JS之执行上下文（Excution-Context）" class="headerlink" title="JS之执行上下文（Excution Context）"></a>JS之执行上下文（Excution Context）</h2><p>当JS代码执行时会创建一个当前代码执行环境,即JS执行上下文，它规定了当前代码的作用域以及执行环境。</p>
+<p>所有JS代码都存在于全局执行上下文中，当函数代码执行时将会创建新的局部执行上下文。执行上下文栈（ECS）采用的是<strong>后进先出</strong>的执行顺序，先后定义的同名函数将由后定义的函数执行。</p>
+<h3 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h3><p>创建：1.初始化作用域链。2.创建变量对象。3确定this指向</p>
+<p>执行：1.变量赋值。2.函数引用。3.执行其他代码</p>
+<h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><p>变量对象是执行上下文的作用域，定义了变量作用域和函数声明， 在进入执行上下文时，首先会处理函数声明，其次会处理变量声明。</p>
+<h2 id="JS之设计模式"><a href="#JS之设计模式" class="headerlink" title="JS之设计模式"></a>JS之设计模式</h2><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">createM</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> man = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">    man.name = <span class="built_in">this</span>.name</span><br><span class="line">    man.age = <span class="built_in">this</span>.age</span><br><span class="line">    man.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">this</span>.name)&#125;</span><br><span class="line">    <span class="keyword">return</span> man</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = createM(<span class="string">&#x27;kkk&#x27;</span>,<span class="number">2021</span>)</span><br><span class="line"><span class="comment">//缺点：无法识别对象类型</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数方法"><a href="#构造函数方法" class="headerlink" title="构造函数方法"></a>构造函数方法</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">Createm</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    man.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="built_in">this</span>.name)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> Createm(<span class="string">&#x27;kkk&#x27;</span>,<span class="number">2021</span>)</span><br><span class="line"><span class="comment">//仍存在相同函数反复实例化的问题</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">Createm</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    man.sayName = sayName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> Createm(<span class="string">&#x27;kkk&#x27;</span>,<span class="number">2021</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>是一个对象，内部包含了一些列方法和属性。JS中每个对象都能通过    <strong>自身._proto_</strong>    指向它本身的原型对象。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>原型链由原型对象组成，每个原型对象通过 <strong>自身._proto_</strong> 属性指向自己的原型对象，当在实例对象中找不到对应的数值时将从原型链自子到父向上寻找。<strong>用来实现集成和属性共享</strong></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>定义属性方法的函数，通过new操作符可以创建对象实例。 </p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>通过构造函数new创建的对象，_proto_属性指向原型（构造函数的.prototype），construct属性指向构造函数。</p>
+<h3 id="this与call、apply、bind"><a href="#this与call、apply、bind" class="headerlink" title="this与call、apply、bind"></a>this与call、apply、bind</h3><p> this 的指向并不是在创建的时候就可以确定的，在 es5 中，永远是<strong>this 永远指向最后调用它的那个对象</strong>。 </p>
+<p><strong>箭头函数的 this 始终指向函数定义时的 this，而非执行时。</strong> 也就是箭头函数是在作用域链生成时确定this指向。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">var</span> a = &#123;        </span><br><span class="line">  name : <span class="string">&quot;Cherry&quot;</span>,         </span><br><span class="line">      func1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;            </span><br><span class="line">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.name) </span><br><span class="line">      &#125;,        </span><br><span class="line">      func2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;            </span><br><span class="line">          <span class="built_in">setTimeout</span>(  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;               </span><br><span class="line">              <span class="built_in">this</span>.func1()            </span><br><span class="line">          &#125;.bind(a)(),<span class="number">100</span>);       </span><br><span class="line">      &#125;     </span><br><span class="line">  &#125;;     </span><br><span class="line">a.func2() </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="call的手写实现"><a href="#call的手写实现" class="headerlink" title="call的手写实现"></a>call的手写实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//首先原生的call方法的作用是传递执行上下文，也就是通俗的this指向。</span></span><br><span class="line"><span class="comment">//即将函数绑定到指定对象中，往对象中动态的添加方法！</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.age)</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.value)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> man2 = &#123;</span><br><span class="line">	name: <span class="string">&#x27;ljj&#x27;</span>,</span><br><span class="line">	age: <span class="number">2</span>,</span><br><span class="line">	value: <span class="string">&#x27;携带参数&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.newcall = <span class="function"><span class="keyword">function</span>(<span class="params">obj, some</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//判断传入对象是否为空，为空传递全局对象</span></span><br><span class="line">	obj = obj || <span class="built_in">window</span></span><br><span class="line">    <span class="comment">//将传入当前函数对象赋值给obj</span></span><br><span class="line">	obj.p = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">//定义类数组</span></span><br><span class="line">	<span class="keyword">let</span> list = []</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">		list.push(<span class="string">&#x27;arguments[&#x27;</span> + i + <span class="string">&#x27;]&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="built_in">eval</span>(<span class="string">&#x27;obj.p(&#x27;</span> + list + <span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">    obj.p()</span><br><span class="line">    <span class="comment">//删除，源对象</span></span><br><span class="line">	<span class="keyword">delete</span> obj.p</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person.newcall(man2)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="JS之闭包"><a href="#JS之闭包" class="headerlink" title="JS之闭包"></a>JS之闭包</h2><p>MDN 对闭包的定义为：</p>
+<blockquote>
+<p>闭包是指那些能够访问自由变量的函数。</p>
+</blockquote>
+<p>那什么是自由变量呢？</p>
+<blockquote>
+<p>自由变量是指在函数中使用的，但既不是函数参数也不是函数的局部变量的变量。</p>
+</blockquote>
+<p>由此，我们可以看出闭包共有两部分组成：</p>
+<blockquote>
+<p>闭包 = 函数 + 函数能够访问的自由变量</p>
+</blockquote>
+<h2 id="与"><a href="#与" class="headerlink" title="==与==="></a>==与===</h2><p>前者将会进行数值（转成数字）转换。</p>
+<h2 id="document-write与innerHTML"><a href="#document-write与innerHTML" class="headerlink" title="document.write与innerHTML"></a>document.write与innerHTML</h2><p>对象不一样，前者属于文档对象。后者属于元素对象。</p>
+]]></content>
+  </entry>
+</search>
